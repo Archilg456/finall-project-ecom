@@ -1,7 +1,8 @@
-import React from 'react'
+import React from "react";
+import { useForm } from "../../applications";
+import { generateRegisterFormValue } from "./generateRegisterFormValue";
 
 export const RegisterForm = () => {
-  return (
-    <div>RegisterForm</div>
-  )
-}
+  let {} = useForm({ defaultFormValue: generateRegisterFormValue() });
+  return <div>RegisterForm</div>;
+};
