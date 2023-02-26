@@ -1,4 +1,6 @@
-export let generetaRegisterFormValue = () => {
+export { generateRegisterFormValue } from "./generateRegisterFormValue";
+
+export let generateRegisterFormValue = () => {
   return {
     firsName: {
       value: "",
