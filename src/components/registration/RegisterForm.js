@@ -1,12 +1,11 @@
 import React from "react";
-import {useForm} from "../../applications";
-import {generateRegisterFormValue} from "./generateRegisterFormValue";
+import { useForm } from "../../applications";
+import { generateRegisterFormValue } from "./generateRegisterFormValue";
 
 export const RegisterForm = () => {
-  const {formvalues:registerFormValue 
-        onIpuntChange:onRegisterInputChange} 
-        = useForm ({defaultFormValue:generateRegisterFormValue()
-         });
+  const { formValues, onIpuntChange } = useForm({
+    defaultFormValue: generateRegisterFormValue(),
+  });
+
   return <div>RegisterForm</div>;
 };
-  

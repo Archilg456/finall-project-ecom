@@ -1,4 +1,4 @@
-export { generateRegisterFormValue } from "./generateRegisterFormValue";
+import { generateRegisterFormValue } from "./generateRegisterFormValue";
 
 export let generateRegisterFormValue = () => {
   return {

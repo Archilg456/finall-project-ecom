@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-export let useForm = ({ defaultFormValue }) => {
-  let [formvalues, setFormValues] = useState(defaultFormValue);
+export let useForm = ({ defaultFormValues }) => {
+  let [formValues, setFormValues] = useState(defaultFormValues);
   let onIpuntChange = (e) => {
     let inputName = e.target.name;
-    let { validateInput } = formvalue[inputName];
+    let { validateInput } = formValues[inputName];
     setFormValues((prevFormValues) => {
       return {
         ...prevFormValues,
@@ -18,7 +18,7 @@ export let useForm = ({ defaultFormValue }) => {
   };
 
   let checkButtonDisable = (value) => {
-    for (const [key, objValue] of Object.entries(values)) {
+    for (const [key, objValue] of Object.entries(value)) {
       if (objValue.required && (objValue.error || !objValue.value)) {
         return true;
       }
@@ -26,11 +26,11 @@ export let useForm = ({ defaultFormValue }) => {
   };
 
   let clearForm = (obj) => {
-    setFormValue(obj);
+    setFormValues(obj);
   };
 
   return {
-    formvalues,
+    formValues,
     setFormValues,
     onIpuntChange,
     clearForm,
