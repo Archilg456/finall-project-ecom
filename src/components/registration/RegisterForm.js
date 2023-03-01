@@ -1,14 +1,14 @@
 import { FormControl, TextField } from "@mui/material";
 import React from "react";
 import { useForm } from "../../applications";
-import { generateRegisterFormValues } from "./generateRegisterFormValues";
+import { generateRegFormValues } from "./generateRegFormValues";
 
 export const RegisterForm = () => {
   const {
     formValues: registerFormValue,
     onIpuntChange: onRegisterInputChange,
   } = useForm({
-    defaultregisterFormValue: generateRegisterFormValues(),
+    defaultregisterFormValue: generateRegFormValues(),
   });
 
   return (
