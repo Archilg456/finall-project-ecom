@@ -5,7 +5,7 @@ export const generateRegistrationFormValue = () => {
       required: true,
       error: "",
       validateInput: (firstname) =>
-        firstname.length > 4 ?  : "firstname must be at last 4 characters ",
+        firstname.length > 4 ? "" : "firstname must be at last 4 characters ",
     },
 
     lastname: {
@@ -13,7 +13,7 @@ export const generateRegistrationFormValue = () => {
       required: true,
       error: "",
       validateInput: (lastName) =>
-      lastName.length > 4 ?  : "lastName must be at last 4 characters ",
+      lastName.length > 4 ? "" : "lastName must be at last 4 characters ",
     },
     email: {
       value: "",

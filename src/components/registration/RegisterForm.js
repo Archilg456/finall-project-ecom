@@ -1,15 +1,44 @@
 import { FormControl, TextField } from "@mui/material";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "../../applications";
-import { generateRegFormValues } from "./generateRegFormValues";
+import { authenticateUser } from "../../redux/slices/userSlice";
+import { generateRegistrationFormValue } from "./generateRegistrationFormValue";
 
 export const RegisterForm = () => {
   const {
     formValues: registerFormValue,
     onIpuntChange: onRegisterInputChange,
   } = useForm({
-    defaultregisterFormValue: generateRegFormValues(),
+    defaultregisterFormValue: generateRegistrationFormValue(),
   });
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const onRegister = () => {
+    const firstName = registerFormValue.firstName.value;
+    const lastName = registerFormValue.lastName.value;
+    const email = registerFormValue.email.value;
+    const password = registerFormValue.password.value;
+    dispatch(
+      authenticateUser({
+        isLogin: false,
+        formValues: {
+          firstName,
+          lastName,
+          email,
+          password,
+        },
+      })
+    )
+      .unwrap()
+      .then(() => {
+        navigate("/");
+      })
+      .catch((err) => {});
+  };
 
   return (
     <FormControl>
@@ -50,7 +79,7 @@ export const RegisterForm = () => {
         helperText={registerFormValue.password.error}
       />
 
-
+      <button onClick={onRegister}> Registration</button>
     </FormControl>
   );
 };

@@ -1,11 +1,29 @@
 import { FormControl, TextField } from "@mui/material";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "../../applications";
+import { authenticateUser } from "../../redux/slices/userSlice";
 import { generateLoginFormValues } from "./generateLoginFormValues";
 
 export const Loginform = () => {
   const { formValues: loginFormValues, onIpuntChange: onLoginInputChange } =
     useForm({ defaultFormValues: generateLoginFormValues() });
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const onLogin = () => {
+    const email = loginFormValues.email.value;
+    const password = loginFormValues.password.value;
+    dispatch(
+      authenticateUser({ isLogin: true, formValues: { email, password } })
+    )
+      .unwrap()
+      .then(() => {
+        navigate("/");
+      });
+  };
 
   return (
     <FormControl>
@@ -27,8 +45,7 @@ export const Loginform = () => {
         error={!!loginFormValues.password.error}
         helperText={loginFormValues.password.error}
       />
-  <button>Log In</button>
-
+      <button onClick={onLogin}>Log In</button>
     </FormControl>
   );
 };
