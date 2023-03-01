@@ -1,19 +1,19 @@
 export const generateRegistrationFormValue = () => {
   return {
-    firstname: {
+    firstName: {
       value: "",
       required: true,
       error: "",
-      validateInput: (firstname) =>
-        firstname.length > 4 ? "" : "firstname must be at last 4 characters ",
+      validateInput: (firstName) =>
+        firstName.length > 4 ? "" : "firstName must be at last 4 characters ",
     },
 
-    lastname: {
+    lastName: {
       value: "",
       required: true,
       error: "",
       validateInput: (lastName) =>
-      lastName.length > 4 ? "" : "lastName must be at last 4 characters ",
+        lastName.length > 4 ? "" : "lastName must be at last 4 characters ",
     },
     email: {
       value: "",

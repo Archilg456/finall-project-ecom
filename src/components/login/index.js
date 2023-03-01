@@ -7,7 +7,7 @@ export const Login = () => {
     <>
       <Loginform />
 
-      <Link to="./Register"> Don't have an Account</Link>
+      <Link to="/Register"> Don't have an Account</Link>
     </>
   );
 };

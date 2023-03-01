@@ -7,7 +7,7 @@ export const Register = () => {
     <>
       <RegisterForm />
 
-      <Link to="/login"> Alredy Have An Account </Link>
+      <Link to="/login"> Alredy  Have An Account </Link>
     </>
   );
 };

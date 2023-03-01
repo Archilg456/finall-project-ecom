@@ -11,7 +11,7 @@ export const RegisterForm = () => {
     formValues: registerFormValue,
     onIpuntChange: onRegisterInputChange,
   } = useForm({
-    defaultregisterFormValue: generateRegistrationFormValue(),
+    defaultFormValues: generateRegistrationFormValue(),
   });
 
   const dispatch = useDispatch();
@@ -46,7 +46,7 @@ export const RegisterForm = () => {
         variant="outlined"
         name="firstName"
         label="firstName"
-        value={registerFormValue.firsName.value}
+        value={registerFormValue.firstName.value}
         onChange={onRegisterInputChange}
         error={!!registerFormValue.firstName.error}
         helperText={registerFormValue.firstName.error}

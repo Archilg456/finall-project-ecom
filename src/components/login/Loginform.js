@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "../../applications";
 import { authenticateUser } from "../../redux/slices/userSlice";
 import { generateLoginFormValues } from "./generateLoginFormValues";
+import "../../App.css";
 
 export const Loginform = () => {
   const { formValues: loginFormValues, onIpuntChange: onLoginInputChange } =
@@ -40,6 +41,7 @@ export const Loginform = () => {
         variant="outlined"
         name="password"
         label="password"
+        type={"password"}
         value={loginFormValues.password.value}
         onChange={onLoginInputChange}
         error={!!loginFormValues.password.error}

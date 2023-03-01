@@ -8,7 +8,7 @@ export const RoutesComponent = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="/About" element={<AboutPage />} />
       <Route path="/Login" element={<LoginPage />} />
-      <Route path="/registration" element={<RegistrationPage />} />
+      <Route path="/register" element={<RegistrationPage />} />
     </Routes>
   );
 };

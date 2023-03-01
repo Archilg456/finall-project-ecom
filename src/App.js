@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <Link to="/registration"> Registration </Link>
-      <Link to="/Login"> Login </Link>
+      <Link to="/"> Home </Link> <br/>
+      <Link to="/Login"> Login </Link> <br/>
+      <Link to="/register"> Registration </Link> <br/>
+      
       <RoutesComponent />
-      <Link to="/"> Home </Link>
+
     </div>
   );
 }
