@@ -3,7 +3,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../../applications";
-import { authenticateUser } from "../../redux/slices/userSlice";
+import { authenticateUser } from "../../redux";
 import { generateRegistrationFormValue } from "./generateRegistrationFormValue";
 
 export const RegisterForm = () => {
@@ -73,6 +73,7 @@ export const RegisterForm = () => {
         variant="outlined"
         name="password"
         label="password"
+        type={"password"}
         value={registerFormValue.password.value}
         onChange={onRegisterInputChange}
         error={!!registerFormValue.password.error}

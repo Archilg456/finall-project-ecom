@@ -5,14 +5,13 @@ export const authenticateUser = createAsyncThunk(
   "user/authenticateUser",
   async (values, { rejectWithValue }) => {
     try {
-      const route = `/user/${values.isLogin ? "login" : "register"}`;
-      const { data } = await axiosInstance.post(route, values.formValue);
+      const route = `/users/${values.isLogin ? "login" : "register"}`;
+      const { data } = await axiosInstance.post(route, values.formValues);
       localStorage.setItem("token", data.token);
       localStorage.setItem("refresh_tokne", data.refreshToken);
       return data;
-    } catch {}
-    {
-      return rejectWithValue("Someting Went Wrong");
+    } catch (error) {
+      return rejectWithValue(" someting Went Wrong");
     }
   }
 );
@@ -29,14 +28,14 @@ const userSlice = createSlice({
     builder.addCase(authenticateUser.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(authenticateUser.fulfilled, (state, Action) => {
+    builder.addCase(authenticateUser.fulfilled, (state, action) => {
       state.loading = false;
-      state.userDate = Action.payload.user;
+      state.userDate = action.payload.user;
       state.error = null;
     });
-    builder.addCase(authenticateUser.rejected, (state, Action) => {
+    builder.addCase(authenticateUser.rejected, (state, action) => {
       state.loading = false;
-      state.error = Action.payload;
+      state.error = action.payload;
     });
   },
 });
