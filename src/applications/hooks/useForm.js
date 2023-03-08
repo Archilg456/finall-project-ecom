@@ -24,7 +24,6 @@ export let useForm = ({ defaultFormValues }) => {
       }
     }
   };
-
   let clearForm = (obj) => {
     setFormValues(obj);
   };
