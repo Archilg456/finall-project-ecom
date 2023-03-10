@@ -1,8 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { userReducer } from "./slices/userSlice";
 import storage from "redux-persist/lib/storage";
-import { persistReducer } from "redux-persist";
-import persistStore from "redux-persist/es/persistStore";
+import { persistReducer, persistStore } from "redux-persist";
 import { useSelector } from "react-redux";
 
 const persistConfig = {
@@ -25,4 +24,4 @@ export const persistor = persistStore(store);
 
 export { authenticateUser } from "./slices/userSlice";
 
-export const useUserInfo = () => useSelector((state) => state.user.userData);
+export const useUserInfo = () => useSelector((state) => state.user.userDate);

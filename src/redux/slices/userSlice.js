@@ -8,7 +8,7 @@ export const authenticateUser = createAsyncThunk(
       const route = `/users/${values.isLogin ? "login" : "register"}`;
       const { data } = await axiosInstance.post(route, values.formValues);
       localStorage.setItem("token", data.token);
-      localStorage.setItem("refresh_tokne", data.refreshToken);
+      localStorage.setItem("refresh_token", data.refreshToken);
       return data;
     } catch (error) {
       return rejectWithValue(" someting Went Wrong");

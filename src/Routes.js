@@ -11,8 +11,8 @@ import {
 import { useUserInfo } from "./redux";
 
 export const RoutesComponent = () => {
-  const userData = useUserInfo();
-  console.log("userData:", userData);
+  const userDate = useUserInfo();
+  console.log("userDate:", userDate);
 
   return (
     <Routes>
@@ -23,7 +23,7 @@ export const RoutesComponent = () => {
       <Route
         path="/products/new"
         element={
-          <ProtectedRoute hasAccess={isUserAdmin(userData)}>
+          <ProtectedRoute hasAccess={isUserAdmin(userDate)}>
             <PeoductFormPage />
           </ProtectedRoute>
         }
@@ -31,7 +31,7 @@ export const RoutesComponent = () => {
       <Route
         path="/products/edit:name"
         element={
-          <ProtectedRoute hasAccess={isUserAdmin(userData)}>
+          <ProtectedRoute hasAccess={isUserAdmin(userDate)}>
             <PeoductFormPage />
           </ProtectedRoute>
         }
