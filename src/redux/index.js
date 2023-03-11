@@ -12,7 +12,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  user: userReducer, 
+  user: userReducer,
   product: productReducer,
 });
 
@@ -24,6 +24,13 @@ export const store = configureStore({
 
 export const persistor = persistStore(store);
 
+// user Slice
 export { authenticateUser } from "./slices/userSlice";
+
+// product Slice
+
+export { saveProduct } from "./slices/ProductSlice";
+
+// hooks
 
 export const useUserInfo = () => useSelector((state) => state.user.userDate);
