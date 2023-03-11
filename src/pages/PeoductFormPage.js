@@ -1,5 +1,6 @@
 import React from "react";
+import { ProductForm } from "../components/product";
 
 export const PeoductFormPage = () => {
-  return <div>PeoductFormPage</div>;
+  return <ProductForm />;
 };

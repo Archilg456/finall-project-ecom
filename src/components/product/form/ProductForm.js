@@ -1,6 +1,8 @@
 import { FormControl, TextField } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
+import { useForm } from "../../../applications";
 import { generateProductFormValue } from "./generateProductFormValue";
+import FileBase from "react-file-base64";
 
 export const ProductForm = () => {
   const {
@@ -10,9 +12,10 @@ export const ProductForm = () => {
   } = useForm({
     defaultFormValues: generateProductFormValue(),
   });
+  const [image, setImage] = useState();
 
   return (
-    <FormControl fullWidth>
+    <FormControl sx={{ width: 750 }}>
       <TextField
         name="name"
         value={ProductFormValues.name.value}
@@ -53,6 +56,14 @@ export const ProductForm = () => {
         error={!!ProductFormValues.price.error}
         helperText={ProductFormValues.description.error}
         label={"price"}
+      />
+      <FileBase
+        type="file"
+        multiple={false}
+        onDone={({ base64 }) => {
+          setImage(base64);
+          console.log("base64:", base64);
+        }}
       />
     </FormControl>
   );
