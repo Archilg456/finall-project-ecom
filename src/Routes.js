@@ -12,7 +12,6 @@ import { useUserInfo } from "./redux";
 
 export const RoutesComponent = () => {
   const userDate = useUserInfo();
-  console.log("userDate:", userDate);
 
   return (
     <Routes>

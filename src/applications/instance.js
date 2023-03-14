@@ -10,7 +10,6 @@ axiosInstance.interceptors.request.use(async (request) => {
   const refresh_token = localStorage.getItem("refresh_token");
   if (!token && !refresh_token) return request;
   request.headers.Authorization = `Bearer ${token}`;
-  console.log("sending request");
   const isExpired = checkTokenValidity(token);
   if (!isExpired) return request;
   const { data } = await axios.post("http://localhost:3001/users/refresh", {

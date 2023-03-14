@@ -9,7 +9,7 @@ import { generateRegistrationFormValue } from "./generateRegistrationFormValue";
 export const RegisterForm = () => {
   const {
     formValues: registerFormValue,
-    onIpuntChange: onRegisterInputChange,
+    onInputChange: onRegisterInputChange,
   } = useForm({
     defaultFormValues: generateRegistrationFormValue(),
   });

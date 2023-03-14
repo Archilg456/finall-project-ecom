@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export let useForm = ({ defaultFormValues }) => {
   let [formValues, setFormValues] = useState(defaultFormValues);
-  let onIpuntChange = (e) => {
+  let onInputChange = (e) => {
     let inputName = e.target.name;
     let { validateInput } = formValues[inputName];
     setFormValues((prevFormValues) => {
@@ -31,7 +31,7 @@ export let useForm = ({ defaultFormValues }) => {
   return {
     formValues,
     setFormValues,
-    onIpuntChange,
+    onInputChange,
     clearForm,
     checkButtonDisable,
   };

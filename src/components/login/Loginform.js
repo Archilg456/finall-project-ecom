@@ -8,7 +8,7 @@ import { generateLoginFormValues } from "./generateLoginFormValues";
 import "../../App.css";
 
 export const Loginform = () => {
-  const { formValues: loginFormValues, onIpuntChange: onLoginInputChange } =
+  const { formValues: loginFormValues, onInputChange: onLoginInputChange } =
     useForm({ defaultFormValues: generateLoginFormValues() });
 
   const dispatch = useDispatch();

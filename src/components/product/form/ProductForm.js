@@ -8,9 +8,8 @@ import { saveProduct } from "../../../redux";
 
 export const ProductForm = () => {
   const {
-    formValues: ProductFormValue,
+    formValues: productFormValues,
     onInputChange: onProductInputChanged,
-    setFormValues,
   } = useForm({
     defaultFormValues: generateProductFormValue(),
   });
@@ -18,11 +17,11 @@ export const ProductForm = () => {
   const dispatch = useDispatch();
 
   const onSaveProduct = () => {
-    const name = ProductFormValue.name.value;
-    const description = ProductFormValue.description.value;
-    const category = ProductFormValue.category.value;
-    const brand = ProductFormValue.brand.value;
-    const price = ProductFormValue.price.value;
+    const name = productFormValues.name.value;
+    const description = productFormValues.description.value;
+    const category = productFormValues.category.value;
+    const brand = productFormValues.brand.value;
+    const price = productFormValues.price.value;
     dispatch(
       saveProduct({
         product: { name, description, category, brand, price, image },
@@ -36,54 +35,54 @@ export const ProductForm = () => {
         variant="outlined"
         name="name"
         label="Name"
-        value={ProductFormValue.name.value}
+        value={productFormValues.name.value}
         onChange={onProductInputChanged}
-        error={!!ProductFormValue.name.error}
-        helperText={ProductFormValue.name.error}
+        error={!!productFormValues.name.error}
+        helperText={productFormValues.name.error}
       />
       <TextField
         variant="outlined"
         name="description"
-        value={ProductFormValue.description.value}
+        value={productFormValues.description.value}
         onChange={onProductInputChanged}
-        error={!!ProductFormValue.description.error}
-        helperText={ProductFormValue.description.error}
+        error={!!productFormValues.description.error}
+        helperText={productFormValues.description.error}
         label="description"
       />
       <TextField
         variant="outlined"
         name="category"
-        value={ProductFormValue.category.value}
+        value={productFormValues.category.value}
         onChange={onProductInputChanged}
-        error={!!ProductFormValue.category.error}
-        helperText={ProductFormValue.category.error}
+        error={!!productFormValues.category.error}
+        helperText={productFormValues.category.error}
         label="category"
       />
       <TextField
         variant="outlined"
         name="brand"
-        value={ProductFormValue.price.value}
+        value={productFormValues.brand.value}
         onChange={onProductInputChanged}
-        error={!!ProductFormValue.brand.error}
-        helperText={ProductFormValue.brand.error}
+        error={!!productFormValues.brand.error}
+        helperText={productFormValues.brand.error}
         label="brand"
       />
       <TextField
         variant="outlined"
         name="price"
         type="number"
-        value={ProductFormValue.price.value}
+        value={productFormValues.price.value}
         onChange={onProductInputChanged}
-        error={!!ProductFormValue.price.error}
-        helperText={ProductFormValue.description.error}
+        error={!!productFormValues.price.error}
+        helperText={productFormValues.price.error}
         label="price"
       />
+
       <FileBase
         type="file"
         multiple={false}
         onDone={({ base64 }) => {
           setImage(base64);
-          console.log("base64:", base64);
         }}
       />
       <Button onClick={onSaveProduct}> Add </Button>
