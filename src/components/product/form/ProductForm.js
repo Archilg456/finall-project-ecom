@@ -1,20 +1,28 @@
 import { Button, FormControl, TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "../../../applications";
 import { generateProductFormValue } from "./generateProductFormValue";
 import FileBase from "react-file-base64";
 import { useDispatch } from "react-redux";
-import { saveProduct } from "../../../redux";
+import {
+  saveProduct,
+  setSelectedProduct,
+  useSelectedProduct,
+} from "../../../redux";
+import { useNavigate } from "react-router-dom";
 
 export const ProductForm = () => {
   const {
     formValues: productFormValues,
     onInputChange: onProductInputChanged,
+    setFormValues,
   } = useForm({
     defaultFormValues: generateProductFormValue(),
   });
   const [image, setImage] = useState();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const selectedProduct = useSelectedProduct();
 
   const onSaveProduct = () => {
     const name = productFormValues.name.value;
@@ -25,9 +33,23 @@ export const ProductForm = () => {
     dispatch(
       saveProduct({
         product: { name, description, category, brand, price, image },
+        isUpdating: !!selectedProduct,
+        id: selectedProduct?._id,
       })
-    );
+    )
+      .unwrap()
+      .then(() => {
+        dispatch(setSelectedProduct(null));
+        navigate("/")
+      });
   };
+
+  useEffect(() => {
+    if (selectedProduct) {
+      setFormValues(generateProductFormValue(selectedProduct));
+      setImage(selectedProduct.image);
+    }
+  }, [selectedProduct]);
 
   return (
     <FormControl sx={{ width: 750 }}>

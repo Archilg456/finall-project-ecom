@@ -29,9 +29,18 @@ export { authenticateUser } from "./slices/userSlice";
 
 // product Slice
 
-export { saveProduct, fetchHomePageProducts, setSelectedProduct } from "./slices/ProductSlice";
+export {
+  saveProduct,
+  fetchHomePageProducts,
+  setSelectedProduct,
+} from "./slices/ProductSlice";
 
 // hooks
 
 export const useUserInfo = () => useSelector((state) => state.user.userDate);
-export const useHomePageProducts = () => useSelector((state) => state.product.homePageProducts);
+
+export const useHomePageProducts = () =>
+  useSelector((state) => state.product.homePageProducts);
+    
+export const useSelectedProduct = () =>
+  useSelector((state) => state.product.selectedProduct);

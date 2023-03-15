@@ -15,9 +15,12 @@ export const fetchHomePageProducts = createAsyncThunk(
 
 export const saveProduct = createAsyncThunk(
   "product/saveProduct",
-  async ({ product }, { rejectWithValue }) => {
+  async ({ product, isUpdating, id }, { dispatch, rejectWithValue }) => {
     try {
-      const { data } = await axiosInstance.post("/products", { product });
+      const endpoint = isUpdating ? `/products/${id}` : "/product";
+      const method = isUpdating ? "put" : "post";
+      const { data } = await axiosInstance[method](endpoint, { product });
+      dispatch(fetchHomePageProducts());
       return data;
     } catch (error) {
       return rejectWithValue("Whoops, looks like Someting Went Wrong");
