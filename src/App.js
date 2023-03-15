@@ -2,14 +2,15 @@ import "./App.css";
 import { RoutesComponent } from "./Routes";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { axiosInstance } from "./applications";
+import { useDispatch } from "react-redux";
+import { fetchHomePageProducts } from "./redux";
 
 function App() {
-  useEffect(() => {
-    axiosInstance
-      .get("/products")
-      .then(({ data }) => console.log("data", data));
-  }, []);
+  const dispatch  = useDispatch();
+
+useEffect(() => {
+dispatch(fetchHomePageProducts());
+});
 
   return (
     <div className="App">
