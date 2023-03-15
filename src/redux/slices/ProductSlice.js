@@ -31,15 +31,20 @@ const productSlice = createSlice({
     loading: false,
     error: null,
     homePageProducts: [],
+    selectedProduct: null,
   },
-  reducers: {},
+  reducers: {
+    setSelectedProduct: (state, action) => {
+      state.selectedProduct = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchHomePageProducts.pending, (state) => {
       state.loading = true;
     });
     builder.addCase(fetchHomePageProducts.fulfilled, (state, action) => {
       state.loading = false;
-      state.homePageProducts = action.payload.product;
+      state.homePageProducts = action.payload.products;
       state.error = false;
     });
     builder.addCase(fetchHomePageProducts.rejected, (state, action) => {
@@ -62,4 +67,6 @@ const productSlice = createSlice({
   },
 });
 
-export const productReducer = productSlice.reducers;
+export const { setSelectedProduct } = productSlice.actions;
+
+export const productReducer = productSlice.reducer;

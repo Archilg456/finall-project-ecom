@@ -29,7 +29,7 @@ export { authenticateUser } from "./slices/userSlice";
 
 // product Slice
 
-export { saveProduct, fetchHomePageProducts } from "./slices/ProductSlice";
+export { saveProduct, fetchHomePageProducts, setSelectedProduct } from "./slices/ProductSlice";
 
 // hooks
 
