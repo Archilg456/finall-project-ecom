@@ -12,12 +12,11 @@ function App() {
   useEffect(() => {
     dispatch(fetchHomePageProducts());
   });
-  
+
   const StyledContentConteiner = styled(Box)(() => ({
-    padding: "0 0 0 37px0",
-    width: "calc(100% - 225px",
+    padding: "0 0 0 37px",
     marginLeft: "225px",
-    margintop: "100px",
+    marginTop: "10rem",
     minHeight: "100vh",
   }));
 

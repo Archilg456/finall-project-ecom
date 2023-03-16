@@ -1,12 +1,4 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  IconButton,
-  Menu,
-  MenuItem,
-  
-} from "@mui/material";
+import { Avatar, Box, Button, IconButton, Menu, MenuItem } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { isUserAdmin } from "../../applications";
@@ -27,7 +19,7 @@ export const UserIcon = () => {
           anchorEl={anchor}
           anchorOrigin={{
             vertical: "bottom",
-            horizontal: "rigth",
+            horizontal: "right",
           }}
           transformOrigin={{
             vertical: "top",
@@ -47,10 +39,7 @@ export const UserIcon = () => {
                 <Button onClick={() => navigate("/Login")}> LogIn </Button>
               </MenuItem>
               <MenuItem>
-                <Button onClick={() => navigate("/register")}>
-                  {" "}
-                  Register{" "}
-                </Button>
+                <Button onClick={() => navigate("/register")}>Register</Button>
               </MenuItem>
             </Box>
           )}
