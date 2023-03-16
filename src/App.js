@@ -1,10 +1,10 @@
 import "./App.css";
 import { RoutesComponent } from "./Routes";
-import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchHomePageProducts } from "./redux";
-
+import { Box, styled } from "@mui/material";
+import { Header } from "./components/header";
 
 function App() {
   const dispatch = useDispatch();
@@ -12,15 +12,23 @@ function App() {
   useEffect(() => {
     dispatch(fetchHomePageProducts());
   });
+  
+  const StyledContentConteiner = styled(Box)(() => ({
+    padding: "0 0 0 37px0",
+    width: "calc(100% - 225px",
+    marginLeft: "225px",
+    margintop: "100px",
+    minHeight: "100vh",
+  }));
 
   return (
-    <div className="App">
-      <Link to="/"> Home </Link> <br />
-      <Link to="/Login"> Login </Link> <br />
-      <Link to="/register"> Registration </Link> <br />
-      <Link to="/products/new"> Add Product </Link>  <br />
-      <RoutesComponent />
-    </div>
+    <Box>
+      <Header />
+
+      <StyledContentConteiner>
+        <RoutesComponent />
+      </StyledContentConteiner>
+    </Box>
   );
 }
 
