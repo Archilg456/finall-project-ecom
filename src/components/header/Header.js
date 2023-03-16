@@ -1,6 +1,7 @@
 import { AppBar, Box, Button, styled, Toolbar } from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useCartItems } from "../../redux";
 import { CartDrawer } from "./CartDrawer";
 import { SearchBar } from "./SearchBar";
 import { UserIcon } from "./UserIcon";
@@ -19,6 +20,7 @@ const StyledToolbar = styled(Toolbar)(() => ({
 
 export const Header = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const cartItems = useCartItems();
 
   return (
     <Box>
@@ -33,7 +35,7 @@ export const Header = () => {
           <CartDrawer
             isCartOpen={isCartOpen}
             setIsCartOpen={setIsCartOpen}
-            cartItems={[]}
+            cartItems={cartItems}
           />
         </StyledToolbar>
       </StyledAppBar>
