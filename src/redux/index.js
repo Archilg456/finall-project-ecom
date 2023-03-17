@@ -27,7 +27,8 @@ export const store = configureStore({
 export const persistor = persistStore(store);
 
 // user Slice
-export { authenticateUser } from "./slices/userSlice";
+export { authenticateUser, logout } from "./slices/userSlice";
+
 
 // product Slice
 

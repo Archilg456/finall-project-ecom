@@ -1,13 +1,15 @@
 import { Avatar, Box, Button, IconButton, Menu, MenuItem } from "@mui/material";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { isUserAdmin } from "../../applications";
-import { useUserInfo } from "../../redux";
+import { logout, useUserInfo } from "../../redux";
 
 export const UserIcon = () => {
   const [anchor, setAnchor] = useState(null);
   const userInfo = useUserInfo();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <Box>
@@ -31,7 +33,7 @@ export const UserIcon = () => {
         >
           {!!userInfo ? (
             <MenuItem>
-              <Button> Logout </Button>
+              <Button onClick={() => dispatch(logout())}> Logout </Button>
             </MenuItem>
           ) : (
             <Box>

@@ -62,12 +62,18 @@ export const ProductCard = ({ product }) => {
           <StyledCardActionsContainer>
             {isProductinCart ? (
               <>
-                <Button onClick={() => dispatch(removeFromCart(_id))}> - </Button>
+                <Button onClick={() => dispatch(removeFromCart(_id))}>-</Button>
                 <Typography> {isProductinCart.quantity} </Typography>
                 <Button onClick={onAddtoCart}> + </Button>
               </>
             ) : (
-              <Button onClick={() => onAddtoCart()} variant="contained" color="success"> Add To Cart </Button>
+              <Button
+                onClick={() => onAddtoCart()}
+                variant="contained"
+                color="success"
+              >
+                Add To Cart
+              </Button>
             )}
           </StyledCardActionsContainer>
         </CardActions>
