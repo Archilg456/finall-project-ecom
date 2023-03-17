@@ -17,7 +17,7 @@ const StyledCartButtonContainer = styled(Box)(() => ({
 }));
 
 export const CartDrawer = ({ isCartOpen, setIsCartOpen, cartItems }) => {
-  const userInfo = useUserInfo();
+  const userInfo = useUserInfo(); 
   const dispatch = useDispatch();
 
   const onSaveCart = (isClear) => {
