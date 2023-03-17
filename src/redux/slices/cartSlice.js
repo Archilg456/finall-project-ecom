@@ -5,7 +5,7 @@ export const fetchCart = createAsyncThunk(
   "cart/fetchCart",
   async (userId, { rejectWithValue }) => {
     try {
-      const { data } = await axiosInstance.get(`/user/${userId}/cart`);
+      const { data } = await axiosInstance.get(`/users/${userId}/cart`);
       return data;
     } catch (error) {
       return rejectWithValue("Whoops, looks like Someting Went Wrong");
@@ -16,7 +16,7 @@ export const saveCart = createAsyncThunk(
   "cart/saveCart",
   async (userId, cartItems, { rejectWithValue, dispatch }) => {
     try {
-      await axiosInstance.put(`/user/${userId}/cart`, { product: cartItems });
+      await axiosInstance.put(`/users/${userId}/cart`, { product: cartItems });
       dispatch(fetchCart(userId));
     } catch (error) {
       return rejectWithValue("Whoops, looks like Someting Went Wrong");

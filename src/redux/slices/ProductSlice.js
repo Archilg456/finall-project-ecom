@@ -17,7 +17,7 @@ export const saveProduct = createAsyncThunk(
   "product/saveProduct",
   async ({ product, isUpdating, id }, { dispatch, rejectWithValue }) => {
     try {
-      const endpoint = isUpdating ? `/products/${id}` : "/product";
+      const endpoint = isUpdating ? `/products/${id}` : "/products";
       const method = isUpdating ? "put" : "post";
       const { data } = await axiosInstance[method](endpoint, { product });
       dispatch(fetchHomePageProducts());
