@@ -29,7 +29,6 @@ export const persistor = persistStore(store);
 // user Slice
 export { authenticateUser, logout } from "./slices/userSlice";
 
-
 // product Slice
 
 export {
@@ -40,7 +39,13 @@ export {
 
 // cart Slice
 
-export { addToCart, removeFromCart, clearCart, saveCart, fetchCart } from "./slices/cartSlice";
+export {
+  addToCart,
+  removeFromCart,
+  clearCart,
+  saveCart,
+  fetchCart,
+} from "./slices/cartSlice";
 // hooks
 
 export const useUserInfo = () => useSelector((state) => state.user.userDate);
@@ -50,6 +55,9 @@ export const useHomePageProducts = () =>
 
 export const useSelectedProduct = () =>
   useSelector((state) => state.product.selectedProduct);
+
+export const useSideBarItems = () =>
+  useSelector((state) => state.product.sideBarItems);
 
 //  Cart Hook
 

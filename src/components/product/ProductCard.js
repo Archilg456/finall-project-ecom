@@ -12,7 +12,9 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart, removeFromCart } from "../../redux/slices/cartSlice";
-import { useCartItems } from "../../redux";
+import { setSelectedProduct, useCartItems, useUserInfo } from "../../redux";
+import { isUserAdmin } from "../../applications";
+import { useNavigate } from "react-router-dom";
 
 const StyledCard = styled(Card)(() => ({
   width: 350,
@@ -38,9 +40,14 @@ export const ProductCard = ({ product }) => {
   const cartItems = useCartItems();
   const isProductinCart = cartItems?.find((item) => item.product._id === _id);
   const dispatch = useDispatch();
-
+  const userInfo = useUserInfo();
+  const navigate = useNavigate();
   const onAddtoCart = () => {
     dispatch(addToCart(product));
+  };
+  const onEdit = () => {
+    navigate(`/products/edit${name}`);
+    dispatch(setSelectedProduct(product));
   };
 
   return (
@@ -71,8 +78,19 @@ export const ProductCard = ({ product }) => {
                 onClick={() => onAddtoCart()}
                 variant="contained"
                 color="success"
+                sx={{ marginLeft: "10x" }}
               >
                 Add To Cart
+              </Button>
+            )}
+            {isUserAdmin(userInfo) && (
+              <Button
+                onClick={onEdit}
+                variant="contained"
+                color="success"
+                sx={{ marginLeft: "10px" }}
+              >
+                Edit
               </Button>
             )}
           </StyledCardActionsContainer>

@@ -49,7 +49,7 @@ export const ProductForm = () => {
       setFormValues(generateProductFormValue(selectedProduct));
       setImage(selectedProduct.image);
     }
-  }, [selectedProduct]);
+  },[selectedProduct]);
 
   return (
     <FormControl sx={{ width: 750 }}>
