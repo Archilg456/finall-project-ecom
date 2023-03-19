@@ -7,6 +7,7 @@ import {
   LoginPage,
   RegistrationPage,
   PeoductFormPage,
+  CategoryProductsPage,
 } from "./pages";
 import { useUserInfo } from "./redux";
 
@@ -35,6 +36,9 @@ export const RoutesComponent = () => {
           </ProtectedRoute>
         }
       />
+       
+       <Route path="/products/categories/:categoryName" element={<CategoryProductsPage /> } />
+
     </Routes>
   );
 };

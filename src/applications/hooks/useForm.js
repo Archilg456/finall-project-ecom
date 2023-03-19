@@ -18,7 +18,7 @@ export let useForm = ({ defaultFormValues }) => {
   };
 
   let checkButtonDisable = (value) => {
-    for (const [key, objValue] of Object.entries(value)) {
+    for (const [objValue] of Object.entries(value)) {
       if (objValue.required && (objValue.error || !objValue.value)) {
         return true;
       }

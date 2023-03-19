@@ -35,6 +35,7 @@ export {
   saveProduct,
   fetchHomePageProducts,
   setSelectedProduct,
+  fetchProductsByCategory,
 } from "./slices/ProductSlice";
 
 // cart Slice
@@ -58,6 +59,9 @@ export const useSelectedProduct = () =>
 
 export const useSideBarItems = () =>
   useSelector((state) => state.product.sideBarItems);
+
+export const useCategoryProducts = () =>
+  useSelector((state) => state.product.categoryProducts);
 
 //  Cart Hook
 

@@ -1,12 +1,8 @@
-import { Drawer,  } from "@mui/material";
-import React from "react";
+import { Drawer } from "@mui/material";
 import { useSideBarItems } from "../../redux";
 import { SideBarContent } from "./SideBarContent";
 
-
-
-
-export const SideBar = (drawerOpen, setDrawerOpen) => {
+export const SideBar = ({ drawerOpen, setDrawerOpen }) => {
   const sideBarItems = useSideBarItems();
 
   return (
@@ -14,7 +10,7 @@ export const SideBar = (drawerOpen, setDrawerOpen) => {
       <Drawer
         variant="temporary"
         open={drawerOpen}
-        onClose={setDrawerOpen(!drawerOpen)}
+        onClose={() => setDrawerOpen(!drawerOpen)}
         ModalProps={{ keepMounted: true }}
         sx={{
           display: { xs: "block", sm: "none" },
