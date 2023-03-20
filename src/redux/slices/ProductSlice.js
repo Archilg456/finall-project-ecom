@@ -39,6 +39,7 @@ export const fetchProductsByCategory = createAsyncThunk(
     }
   }
 );
+console.log("fetchProductsByCategory:", fetchProductsByCategory);
 
 const productSlice = createSlice({
   name: "product",
@@ -88,7 +89,7 @@ const productSlice = createSlice({
     });
     builder.addCase(fetchProductsByCategory.fulfilled, (state, action) => {
       state.loading = false;
-      state.categoryProducts = action.payload.products;
+      state.categoryProducts = action.payload;
     });
     builder.addCase(fetchProductsByCategory.rejected, (state, action) => {
       state.loading = false;

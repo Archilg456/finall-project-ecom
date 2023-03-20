@@ -36,9 +36,11 @@ export const RoutesComponent = () => {
           </ProtectedRoute>
         }
       />
-       
-       <Route path="/products/categories/:categoryName" element={<CategoryProductsPage /> } />
 
+      <Route
+        path="/products/categories:categoryName"
+        element={<CategoryProductsPage />}
+      />
     </Routes>
   );
 };

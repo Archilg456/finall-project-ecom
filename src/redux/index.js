@@ -62,7 +62,6 @@ export const useSideBarItems = () =>
 
 export const useCategoryProducts = () =>
   useSelector((state) => state.product.categoryProducts);
-
 //  Cart Hook
 
 export const useCartItems = () => useSelector((state) => state.cart.cartItems);

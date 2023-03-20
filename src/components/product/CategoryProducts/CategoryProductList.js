@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { fetchProductsByCategory, useCategoryProducts } from "../../../redux";
 import { ProductCard } from "../ProductCard";
 import { GridComponent } from "../../shared";
+
 export const CategoryProductList = () => {
   const { categoryName } = useParams();
   const dispatch = useDispatch();
@@ -12,18 +13,21 @@ export const CategoryProductList = () => {
 
   useEffect(() => {
     dispatch(
-      fetchProductsByCategory(`${categoryName}?page=1&size=1&sort=price,desc`)
+      fetchProductsByCategory(`${categoryName}?page=1&size=3&sort=price,desc}`)
     );
   }, [categoryName]);
 
   return (
+    
+
     <Box>
+              {categoryName}
+
       <GridComponent>
-        {products?.map((product) => {
-          <ProductCard id={product._id} product={product} />;
-        })}
+        {products?.map((product) => (
+          <ProductCard id={product._id} product={product} />
+        ))}
       </GridComponent>
-      {categoryName}
     </Box>
   );
 };

@@ -5,7 +5,7 @@ import { SideBarHeader } from "./SideBarHeader";
 
 const StyledListItem = styled(ListItem)(() => ({
   pending: " 5px 0px 3px 15px",
-  marging: "0px",
+  merging: "0px",
 }));
 
 export const SideBarContent = ({ sideBarItems }) => {
@@ -19,7 +19,7 @@ export const SideBarContent = ({ sideBarItems }) => {
             <React.Fragment key={_id}>
               <Link
                 style={{ textDecoration: "none" }}
-                to={`/products/categories/${name}`}
+                to={`/products/categories${name}`}
               >
                 <Box sx={{ display: "flex" }}>
                   <StyledListItem>

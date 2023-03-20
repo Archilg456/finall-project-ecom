@@ -6,8 +6,8 @@ export const CategoryProductsPage = () => {
   return (
     <>
       <SideBar />
-    <CategoryProductList />
 
+      <CategoryProductList />
     </>
   );
 };
