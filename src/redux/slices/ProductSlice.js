@@ -39,7 +39,6 @@ export const fetchProductsByCategory = createAsyncThunk(
     }
   }
 );
-console.log("fetchProductsByCategory:", fetchProductsByCategory);
 
 const productSlice = createSlice({
   name: "product",

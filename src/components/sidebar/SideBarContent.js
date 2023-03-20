@@ -19,7 +19,7 @@ export const SideBarContent = ({ sideBarItems }) => {
             <React.Fragment key={_id}>
               <Link
                 style={{ textDecoration: "none" }}
-                to={`/products/categories${name}`}
+                to={`/products/categories${name}?page=1&sort=price,desc`}
               >
                 <Box sx={{ display: "flex" }}>
                   <StyledListItem>
