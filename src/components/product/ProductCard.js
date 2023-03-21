@@ -10,11 +10,12 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { addToCart, removeFromCart } from "../../redux/slices/cartSlice";
 import { setSelectedProduct, useCartItems, useUserInfo } from "../../redux";
 import { isUserAdmin } from "../../applications";
 import { useNavigate } from "react-router-dom";
+import { rateProduct } from "../../redux/slices/ProductSlice";
 
 const StyledCard = styled(Card)(() => ({
   width: 350,
@@ -35,19 +36,36 @@ const StyledCardActionsContainer = styled(Box)(() => ({
 }));
 
 export const ProductCard = ({ product }) => {
-  const { name, price, image, category, _id } = product;
+  const { name, price, image, category, _id, averageRating } = product;
 
   const cartItems = useCartItems();
   const isProductinCart = cartItems?.find((item) => item.product._id === _id);
   const dispatch = useDispatch();
   const userInfo = useUserInfo();
   const navigate = useNavigate();
+  const { pathname, search } = useLocation();
+  console.log("search:", search)
+
   const onAddtoCart = () => {
     dispatch(addToCart(product));
   };
   const onEdit = () => {
     navigate(`/products/edit${name}`);
     dispatch(setSelectedProduct(product));
+  };
+
+  const onRatingChange = (e) => {
+    console.log(e.target.value);
+
+    dispatch(
+      rateProduct({
+        productId: _id,
+        userId: userInfo?._id,
+        rating: +e.target.value,
+        isHome: pathname==="/",
+        url: `${category}${search}`,
+      })
+    );
   };
 
   return (
@@ -65,7 +83,11 @@ export const ProductCard = ({ product }) => {
           </StyledCardInfoContainer>
         </Link>
         <CardActions>
-          <Rating />
+          <Rating
+            onChange={onRatingChange}
+            disabled={!userInfo}
+            value={averageRating}
+          />
           <StyledCardActionsContainer>
             {isProductinCart ? (
               <>
