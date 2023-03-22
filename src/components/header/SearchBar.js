@@ -1,27 +1,38 @@
 import { Autocomplete, Box, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { queryProducts, useSearchResults } from "../../redux";
+import { useDispatch } from "react-redux";
 
 export const SearchBar = () => {
-  const results = [];
-  const [searchQuery, setSearchQuery] = useState("");
-  console.log("searchQuery:", searchQuery);
+  const searchResult = useSearchResults();
 
+  const [searchQuery, setSearchQuery] = useState("");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      if (searchQuery) {
+        dispatch(queryProducts(searchQuery));
+      }
+    }, 1500);
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [searchQuery]);
   return (
     <Autocomplete
       freeSolo
       sx={{
         width: 700,
         background: "#fff",
-        borderRadius: 5,
         outline: "none",
-        margin: 2,
       }}
       disableClearable
-      options={results}
+      options={searchResult}
       getOptionLabel={(option) => option.name}
       renderOption={(_, option) => {
-        const { name, _id, category, price } = option;
+        const { name, category, price, _id } = option;
         return (
           <Link
             to={`/products/categories/${category}/${name}`}
@@ -41,8 +52,8 @@ export const SearchBar = () => {
             {...params}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            label="Search"
-            InputProps={{ ...params.inputProps, type: "search" }}
+            label="Search Products"
+            InputProps={{ ...params.InputProps, type: "search" }}
           />
         );
       }}

@@ -15,9 +15,9 @@ export const fetchHomePageProducts = createAsyncThunk(
 
 export const saveProduct = createAsyncThunk(
   "product/saveProduct",
-  async ({ product, isUpdating, id }, { dispatch, rejectWithValue }) => {
+  async ({ product, isUpdating, _id }, { dispatch, rejectWithValue }) => {
     try {
-      const endpoint = isUpdating ? `/products/${id}` : "/products";
+      const endpoint = isUpdating ? `/products/${_id}` : "/products";
       const method = isUpdating ? "put" : "post";
       const { data } = await axiosInstance[method](endpoint, { product });
       dispatch(fetchHomePageProducts());
@@ -75,6 +75,20 @@ export const fetchSingleProduct = createAsyncThunk(
   }
 );
 
+export const queryProducts = createAsyncThunk(
+  "product/queryProducts",
+  async (searchString, { rejectWithValue }) => {
+    try {
+      const { data } = await axiosInstance.get(
+        `/products?name=${searchString}`
+      );
+      return data;
+    } catch (error) {
+      rejectWithValue("Whoops, looks like Someting Went Wrong");
+    }
+  }
+);
+
 const productSlice = createSlice({
   name: "product",
   initialState: {
@@ -85,6 +99,7 @@ const productSlice = createSlice({
     sideBarItems: [],
     categoryProducts: [],
     singleProduct: null,
+    searchResult: [],
   },
   reducers: {
     setSelectedProduct: (state, action) => {
@@ -141,6 +156,17 @@ const productSlice = createSlice({
       state.singleProduct = action.payload.product;
     });
     builder.addCase(fetchSingleProduct.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    });
+    builder.addCase(queryProducts.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(queryProducts.fulfilled, (state, action) => {
+      state.loading = false;
+      state.searchResult = action.payload.product;
+    });
+    builder.addCase(queryProducts.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
     });

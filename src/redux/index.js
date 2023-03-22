@@ -37,6 +37,7 @@ export {
   setSelectedProduct,
   fetchProductsByCategory,
   fetchSingleProduct,
+  queryProducts,
 } from "./slices/ProductSlice";
 
 // cart Slice
@@ -65,6 +66,8 @@ export const useCategoryProducts = () =>
   useSelector((state) => state.product.categoryProducts);
 export const useSingleProduct = () =>
   useSelector((state) => state.product.singleProduct);
+export const useSearchResults = () =>
+  useSelector((state) => state.product.searchResult);
 //  Cart Hook
 
 export const useCartItems = () => useSelector((state) => state.cart.cartItems);
