@@ -44,7 +44,6 @@ export const ProductCard = ({ product }) => {
   const userInfo = useUserInfo();
   const navigate = useNavigate();
   const { pathname, search } = useLocation();
-  console.log("search:", search)
 
   const onAddtoCart = () => {
     dispatch(addToCart(product));
@@ -62,7 +61,7 @@ export const ProductCard = ({ product }) => {
         productId: _id,
         userId: userInfo?._id,
         rating: +e.target.value,
-        isHome: pathname==="/",
+        isHome: pathname === "/",
         url: `${category}${search}`,
       })
     );
@@ -71,7 +70,11 @@ export const ProductCard = ({ product }) => {
   return (
     <Grid item>
       <StyledCard>
-        <Link style={{ textDecoration: "none", color: "black" }}>
+        <Link
+          style={{ textDecoration: "none", color: "black" }}
+          to={`/products/categories/${category}/${name}`}
+          state={{ id: _id }}
+        >
           <img
             src={image}
             alt={`${category}-${name}`}
