@@ -1,12 +1,7 @@
-import { Box, List, ListItem, ListItemText, styled } from "@mui/material";
+import { Box, List, ListItemText } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import { SideBarHeader } from "./SideBarHeader";
-
-const StyledListItem = styled(ListItem)(() => ({
-  pending: " 5px 0px 3px 15px",
-  merging: "0px",
-}));
 
 export const SideBarContent = ({ sideBarItems }) => {
   return (
@@ -21,10 +16,14 @@ export const SideBarContent = ({ sideBarItems }) => {
                 style={{ textDecoration: "none" }}
                 to={`/products/categories${name}?page=1&sort=price,desc`}
               >
-                <Box sx={{ display: "flex" }}>
-                  <StyledListItem>
-                    <ListItemText secondary={name} />
-                  </StyledListItem>
+                <Box
+                  sx={{
+                    display: "flex",
+                    marginLeft: "2rem",
+                    marginTop: "1.5rem",
+                  }}
+                >
+                  <ListItemText secondary={name} />
                 </Box>
               </Link>
             </React.Fragment>

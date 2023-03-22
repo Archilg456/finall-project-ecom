@@ -8,13 +8,16 @@ const StyledSideBarHeader = styled(Box)(() => ({
   display: "flex",
   alignItems: "center",
   fontSize: "3rem",
+  fontFamily: "800",
   textDecoration: "none",
 }));
 
 export const SideBarHeader = () => {
   return (
     <StyledSideBarHeader>
-      <Link to="/">DecorAll</Link>
+      <Link to="/" style={{ textDecoration: "none", color: "#04623E" }}>
+        DecorAll
+      </Link>
     </StyledSideBarHeader>
   );
 };
