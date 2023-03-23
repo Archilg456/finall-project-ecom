@@ -11,12 +11,15 @@ const StyledAppBar = styled(AppBar)(() => ({
   color: "#fff",
   width: "calc(100% - 225px)",
   padding: "0 37px 0 30px",
+  backgroundColor: "#42826CFF",
+  boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.24)",
 }));
 
 const StyledToolbar = styled(Toolbar)(() => ({
   display: "flex",
   width: "100%",
   justifyContent: "space-between",
+  
 }));
 
 const StyledBadge = styled(Badge)(() => ({
