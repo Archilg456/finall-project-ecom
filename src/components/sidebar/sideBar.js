@@ -11,7 +11,9 @@ export const SideBar = ({ drawerOpen, setDrawerOpen }) => {
         variant="temporary"
         open={drawerOpen}
         onClose={() => setDrawerOpen(!drawerOpen)}
-        ModalProps={{ keepMounted: true }}
+        ModalProps={{
+           keepMounted: true,
+           }}
         sx={{
           display: { xs: "block", sm: "none" },
           "& .MuiDrawer-paper": {

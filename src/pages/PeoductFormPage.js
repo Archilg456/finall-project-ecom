@@ -7,7 +7,7 @@ export const PeoductFormPage = () => {
   return  (
     <>
       <ProductForm />
-      <SideBar />
+    
     </>
   )
   

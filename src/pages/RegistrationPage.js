@@ -6,7 +6,7 @@ export const RegistrationPage = () => {
   return (
     <>
       <Register />
-      <SideBar />
+      
     </>
   );
 };

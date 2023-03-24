@@ -5,7 +5,7 @@ import { SideBar } from "../components/sidebar/sideBar";
 export const SingleProductPage = () => {
   return (
     <>
-      <SideBar />
+     
       <SingleProduct />
     </>
   );
