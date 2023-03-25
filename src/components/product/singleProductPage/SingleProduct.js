@@ -6,9 +6,16 @@ import { fetchSingleProduct, useSingleProduct } from "../../../redux";
 
 const StyledSingleProduct = styled(Box)(() => ({
   display: "grid",
+  gridTemplateColumns: "1fr 1fr ",
+  gridTemplateRows: "1fr ",
+  marginBottom: 250,
 }));
 
-export const SingleProduct = () => {
+const StyledInfoProduct = styled(Box)(() => ({
+  marginLeft: "20px",
+}));
+
+export const SingleProduct = ({}) => {
   const { state } = useLocation();
 
   const dispatch = useDispatch();
@@ -17,8 +24,6 @@ export const SingleProduct = () => {
 
   const singleProduct = useSingleProduct();
 
-
-
   useEffect(() => {
     dispatch(fetchSingleProduct({ id: state.id, category: categoryName }));
   }, [state.id]);
@@ -26,8 +31,17 @@ export const SingleProduct = () => {
   return (
     <>
       <StyledSingleProduct>
-        <h1>{singleProduct?.name}</h1>
-        <h2>{singleProduct?.price}₾</h2>
+        <img
+          src={singleProduct?.image}
+          alt={`${categoryName}`}
+          style={{ objectFit: "cover", width: "100%", height: "500px" }}
+        />
+        <StyledInfoProduct>
+          <h1>{singleProduct?.name}</h1>
+          <h2> ფასი : {singleProduct?.price}₾</h2>
+          <h3> კატეგორია : {singleProduct?.category}</h3>
+          <h5> ბრენდი : {singleProduct?.brand}</h5>
+        </StyledInfoProduct>
       </StyledSingleProduct>
     </>
   );
