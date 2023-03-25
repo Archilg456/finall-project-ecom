@@ -13,6 +13,8 @@ import { useForm } from "../../applications";
 import { authenticateUser } from "../../redux/slices/userSlice";
 import { generateLoginFormValues } from "./generateLoginFormValues";
 import "../../App.css";
+import { LoadingWrapper } from "../shared";
+import { useProductLoading } from "../../redux";
 
 const StyledloginForm = styled(Box)(() => ({
   display: "grid",
@@ -40,61 +42,64 @@ export const Loginform = () => {
         navigate("/");
       });
   };
+  const isLoading = useProductLoading();
 
   return (
-    <StyledloginForm>
-      <Avatar sx={{ marginLeft: "9rem", background: "#04623E" }} />
+    <LoadingWrapper isLoading={isLoading}>
+      <StyledloginForm>
+        <Avatar sx={{ marginLeft: "9rem", background: "#04623E" }} />
 
-      <FormControl>
-        <TextField
-          sx={{ marginTop: "1rem" }}
-          variant="outlined"
-          name="email"
-          label="Email"
-          value={loginFormValues.email.value}
-          onChange={onLoginInputChange}
-          error={!!loginFormValues.email.error}
-          helperText={loginFormValues.email.error}
-        />
-        <TextField
-          sx={{ marginTop: "1rem" }}
-          variant="outlined"
-          name="password"
-          label="Password"
-          type={"password"}
-          value={loginFormValues.password.value}
-          onChange={onLoginInputChange}
-          error={!!loginFormValues.password.error}
-          helperText={loginFormValues.password.error}
-        />
-        <Button
-          sx={{
-            borderRadius: "15px",
-            width: "350px",
-            margin: "auto",
-            marginTop: "2rem",
-          }}
-          variant="contained"
-          color="success"
-          onClick={onLogin}
-        >
-          Log In
-        </Button>
-        <Link to="/register">
+        <FormControl>
+          <TextField
+            sx={{ marginTop: "1rem" }}
+            variant="outlined"
+            name="email"
+            label="Email"
+            value={loginFormValues.email.value}
+            onChange={onLoginInputChange}
+            error={!!loginFormValues.email.error}
+            helperText={loginFormValues.email.error}
+          />
+          <TextField
+            sx={{ marginTop: "1rem" }}
+            variant="outlined"
+            name="password"
+            label="Password"
+            type={"password"}
+            value={loginFormValues.password.value}
+            onChange={onLoginInputChange}
+            error={!!loginFormValues.password.error}
+            helperText={loginFormValues.password.error}
+          />
           <Button
             sx={{
               borderRadius: "15px",
               width: "350px",
               margin: "auto",
               marginTop: "2rem",
-              fontSize: "1.2rem",
             }}
+            variant="contained"
             color="success"
+            onClick={onLogin}
           >
-            Don't have an Account
+            Log In
           </Button>
-        </Link>
-      </FormControl>
-    </StyledloginForm>
+          <Link to="/register">
+            <Button
+              sx={{
+                borderRadius: "15px",
+                width: "350px",
+                margin: "auto",
+                marginTop: "2rem",
+                fontSize: "1.2rem",
+              }}
+              color="success"
+            >
+              Don't have an Account
+            </Button>
+          </Link>
+        </FormControl>
+      </StyledloginForm>
+    </LoadingWrapper>
   );
 };

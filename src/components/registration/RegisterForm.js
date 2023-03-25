@@ -10,7 +10,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "../../applications";
-import { authenticateUser } from "../../redux";
+import { authenticateUser, useProductLoading } from "../../redux";
+import { LoadingWrapper } from "../shared";
 import { generateRegistrationFormValue } from "./generateRegistrationFormValue";
 
 const StyledRegistrationForm = styled(Box)(() => ({
@@ -55,83 +56,86 @@ export const RegisterForm = () => {
       .catch((err) => {});
   };
 
+  const isLoading = useProductLoading();
   return (
-    <StyledRegistrationForm>
-      <Avatar sx={{ marginLeft: "15rem", background: "#04623E" }} />
+    <LoadingWrapper isLoading={isLoading}>
+      <StyledRegistrationForm>
+        <Avatar sx={{ marginLeft: "15rem", background: "#04623E" }} />
 
-      <FormControl>
-        <TextField
-          sx={{ marginTop: "1rem" }}
-          variant="outlined"
-          name="firstName"
-          label="First Name"
-          value={registerFormValue.firstName.value}
-          onChange={onRegisterInputChange}
-          error={!!registerFormValue.firstName.error}
-          helperText={registerFormValue.firstName.error}
-        />
-        <TextField
-          sx={{ marginTop: "1rem" }}
-          variant="outlined"
-          name="lastName"
-          label="Last Name"
-          value={registerFormValue.lastName.value}
-          onChange={onRegisterInputChange}
-          error={!!registerFormValue.lastName.error}
-          helperText={registerFormValue.lastName.error}
-        />
-        <TextField
-          sx={{ marginTop: "1rem" }}
-          variant="outlined"
-          name="email"
-          label="Email"
-          value={registerFormValue.email.value}
-          onChange={onRegisterInputChange}
-          error={!!registerFormValue.email.error}
-          helperText={registerFormValue.email.error}
-        />
-        <TextField
-          sx={{ marginTop: "1rem" }}
-          variant="outlined"
-          name="password"
-          label="Password"
-          type={"password"}
-          value={registerFormValue.password.value}
-          onChange={onRegisterInputChange}
-          error={!!registerFormValue.password.error}
-          helperText={registerFormValue.password.error}
-        />
+        <FormControl>
+          <TextField
+            sx={{ marginTop: "1rem" }}
+            variant="outlined"
+            name="firstName"
+            label="First Name"
+            value={registerFormValue.firstName.value}
+            onChange={onRegisterInputChange}
+            error={!!registerFormValue.firstName.error}
+            helperText={registerFormValue.firstName.error}
+          />
+          <TextField
+            sx={{ marginTop: "1rem" }}
+            variant="outlined"
+            name="lastName"
+            label="Last Name"
+            value={registerFormValue.lastName.value}
+            onChange={onRegisterInputChange}
+            error={!!registerFormValue.lastName.error}
+            helperText={registerFormValue.lastName.error}
+          />
+          <TextField
+            sx={{ marginTop: "1rem" }}
+            variant="outlined"
+            name="email"
+            label="Email"
+            value={registerFormValue.email.value}
+            onChange={onRegisterInputChange}
+            error={!!registerFormValue.email.error}
+            helperText={registerFormValue.email.error}
+          />
+          <TextField
+            sx={{ marginTop: "1rem" }}
+            variant="outlined"
+            name="password"
+            label="Password"
+            type={"password"}
+            value={registerFormValue.password.value}
+            onChange={onRegisterInputChange}
+            error={!!registerFormValue.password.error}
+            helperText={registerFormValue.password.error}
+          />
 
-        <Button
-          sx={{
-            borderRadius: "15px",
-            width: "350px",
-            margin: "auto",
-            marginTop: "2rem",
-          }}
-          variant="contained"
-          color="success"
-          onClick={onRegister}
-        >
-          Registration
-        </Button>
-
-        <Link to="/login">
           <Button
             sx={{
               borderRadius: "15px",
               width: "350px",
               margin: "auto",
               marginTop: "2rem",
-              marginLeft: "6rem",
-              fontSize: "1.2rem",
             }}
+            variant="contained"
             color="success"
+            onClick={onRegister}
           >
-            Alredy Have An Account
+            Registration
           </Button>
-        </Link>
-      </FormControl>
-    </StyledRegistrationForm>
+
+          <Link to="/login">
+            <Button
+              sx={{
+                borderRadius: "15px",
+                width: "350px",
+                margin: "auto",
+                marginTop: "2rem",
+                marginLeft: "6rem",
+                fontSize: "1.2rem",
+              }}
+              color="success"
+            >
+              Alredy Have An Account
+            </Button>
+          </Link>
+        </FormControl>
+      </StyledRegistrationForm>
+    </LoadingWrapper>
   );
 };

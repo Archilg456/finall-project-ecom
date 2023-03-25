@@ -28,7 +28,7 @@ export const SearchBar = () => {
         background: "#fff",
         outline: "none",
         border: "none",
-      
+        borderRadius: 3,
       }}
       disableClearable
       options={searchResult}
@@ -40,6 +40,7 @@ export const SearchBar = () => {
             to={`/products/categories/${category}/${name}`}
             key={_id}
             state={{ id: _id }}
+            
           >
             <Box>
               <Typography>{name}</Typography>

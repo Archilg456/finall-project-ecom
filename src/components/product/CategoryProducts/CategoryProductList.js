@@ -2,9 +2,13 @@ import { Box, styled } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchProductsByCategory, useCategoryProducts } from "../../../redux";
+import {
+  fetchProductsByCategory,
+  useCategoryProducts,
+  useProductLoading,
+} from "../../../redux";
 import { ProductCard } from "../ProductCard";
-import { GridComponent } from "../../shared";
+import { GridComponent, LoadingWrapper } from "../../shared";
 import { useQueryParams } from "../../../applications";
 import { Paginate } from "./Paginate";
 import { Sort } from "./Sort";
@@ -16,7 +20,6 @@ const StyledCategoryName = styled(Box)(() => ({
   textAlign: "center",
   fontSize: "2rem",
   margin: "4rem",
-  
 }));
 
 export const CategoryProductList = () => {
@@ -38,25 +41,28 @@ export const CategoryProductList = () => {
     changePage("page", 1);
   }, [sort]);
 
+  const isLoading = useProductLoading();
+
   return (
-    <Box >
-      
-      <StyledCategoryName>{categoryName}</StyledCategoryName>
+    <Box>
+      <LoadingWrapper isLoading={isLoading}>
+        <StyledCategoryName>{categoryName}</StyledCategoryName>
 
-      <Sort value={sort} changeSort={changeSort} />
+        <Sort value={sort} changeSort={changeSort} />
 
-      <GridComponent>
-        {products?.map((product) => (
-          <ProductCard key={product._id} product={product} />
-        ))}
-      </GridComponent>
-      <StyledCategoryName>
-        <Paginate
-          totalPages={totalPages}
-          currentPage={page}
-          changePage={changePage}
-        />
-      </StyledCategoryName>
+        <GridComponent>
+          {products?.map((product) => (
+            <ProductCard key={product._id} product={product} />
+          ))}
+        </GridComponent>
+        <StyledCategoryName>
+          <Paginate
+            totalPages={totalPages}
+            currentPage={page}
+            changePage={changePage}
+          />
+        </StyledCategoryName>
+      </LoadingWrapper>
     </Box>
   );
 };

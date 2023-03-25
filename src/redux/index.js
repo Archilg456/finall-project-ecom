@@ -68,6 +68,8 @@ export const useSingleProduct = () =>
   useSelector((state) => state.product.singleProduct);
 export const useSearchResults = () =>
   useSelector((state) => state.product.searchResult);
+export const useProductLoading = () =>
+  useSelector((state) => state.product.loading);
 //  Cart Hook
 
 export const useCartItems = () => useSelector((state) => state.cart.cartItems);

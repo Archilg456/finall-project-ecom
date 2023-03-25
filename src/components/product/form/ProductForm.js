@@ -7,9 +7,11 @@ import { useDispatch } from "react-redux";
 import {
   saveProduct,
   setSelectedProduct,
+  useProductLoading,
   useSelectedProduct,
 } from "../../../redux";
 import { useNavigate } from "react-router-dom";
+import { LoadingWrapper } from "../../shared";
 
 const StyledProductForm = styled(Box)(() => ({
   display: "grid",
@@ -59,84 +61,86 @@ export const ProductForm = () => {
       setImage(selectedProduct.image);
     }
   }, [selectedProduct]);
+  const isLoading = useProductLoading();
 
   return (
-    <StyledProductForm>
-      <FormControl sx={{ width: 750 }}>
-        <TextField
-          sx={{ marginTop: "1rem" }}
-          variant="outlined"
-          name="name"
-          label="Name"
-          value={productFormValues.name.value}
-          onChange={onProductInputChanged}
-          error={!!productFormValues.name.error}
-          helperText={productFormValues.name.error}
-        />
-        <TextField
-          sx={{ marginTop: "1rem" }}
-          variant="outlined"
-          name="description"
-          value={productFormValues.description.value}
-          onChange={onProductInputChanged}
-          error={!!productFormValues.description.error}
-          helperText={productFormValues.description.error}
-          label="description"
-        />
-        <TextField
-          sx={{ marginTop: "1rem" }}
-          variant="outlined"
-          name="category"
-          value={productFormValues.category.value}
-          onChange={onProductInputChanged}
-          error={!!productFormValues.category.error}
-          helperText={productFormValues.category.error}
-          label="category"
-        />
-        <TextField
-          sx={{ marginTop: "1rem" }}
-          variant="outlined"
-          name="brand"
-          value={productFormValues.brand.value}
-          onChange={onProductInputChanged}
-          error={!!productFormValues.brand.error}
-          helperText={productFormValues.brand.error}
-          label="brand"
-        />
-        <TextField
-          sx={{ marginTop: "1rem" }}
-          variant="outlined"
-          name="price"
-          type="number"
-          value={productFormValues.price.value}
-          onChange={onProductInputChanged}
-          error={!!productFormValues.price.error}
-          helperText={productFormValues.price.error}
-          label="price"
-        />
+    <LoadingWrapper isLoading={isLoading}>
+      <StyledProductForm>
+        <FormControl sx={{ width: 750 }}>
+          <TextField
+            sx={{ marginTop: "1rem" }}
+            variant="outlined"
+            name="name"
+            label="Name"
+            value={productFormValues.name.value}
+            onChange={onProductInputChanged}
+            error={!!productFormValues.name.error}
+            helperText={productFormValues.name.error}
+          />
+          <TextField
+            sx={{ marginTop: "1rem" }}
+            variant="outlined"
+            name="description"
+            value={productFormValues.description.value}
+            onChange={onProductInputChanged}
+            error={!!productFormValues.description.error}
+            helperText={productFormValues.description.error}
+            label="description"
+          />
+          <TextField
+            sx={{ marginTop: "1rem" }}
+            variant="outlined"
+            name="category"
+            value={productFormValues.category.value}
+            onChange={onProductInputChanged}
+            error={!!productFormValues.category.error}
+            helperText={productFormValues.category.error}
+            label="category"
+          />
+          <TextField
+            sx={{ marginTop: "1rem" }}
+            variant="outlined"
+            name="brand"
+            value={productFormValues.brand.value}
+            onChange={onProductInputChanged}
+            error={!!productFormValues.brand.error}
+            helperText={productFormValues.brand.error}
+            label="brand"
+          />
+          <TextField
+            sx={{ marginTop: "1rem" }}
+            variant="outlined"
+            name="price"
+            type="number"
+            value={productFormValues.price.value}
+            onChange={onProductInputChanged}
+            error={!!productFormValues.price.error}
+            helperText={productFormValues.price.error}
+            label="price"
+          />
 
-        <FileBase
-          type="file"
-          multiple={false}
-          onDone={({ base64 }) => {
-            setImage(base64);
-          }}
-        />
-        <Button
-          onClick={onSaveProduct}
-          sx={{
-            borderRadius: "15px",
-            width: "550px",
-            margin: "auto",
-            marginTop: "2rem",
-          }}
-          variant="contained"
-          color="success"
-        >
-          
-          Add Product
-        </Button>
-      </FormControl>
-    </StyledProductForm>
+          <FileBase
+            type="file"
+            multiple={false}
+            onDone={({ base64 }) => {
+              setImage(base64);
+            }}
+          />
+          <Button
+            onClick={onSaveProduct}
+            sx={{
+              borderRadius: "15px",
+              width: "550px",
+              margin: "auto",
+              marginTop: "2rem",
+            }}
+            variant="contained"
+            color="success"
+          >
+            Add Product
+          </Button>
+        </FormControl>
+      </StyledProductForm>
+    </LoadingWrapper>
   );
 };
