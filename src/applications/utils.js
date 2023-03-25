@@ -9,7 +9,6 @@ export const checkTokenValidity = (token) => {
 export const isUserAdmin = (user) => {
   return user?.role?.includes("admin");
 };
-
 export const getUserInitials = (firstName, lastName) => {
   if (!firstName || !lastName) {
     return " ";

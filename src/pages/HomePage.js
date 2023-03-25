@@ -5,7 +5,7 @@ export const HomePage = () => {
     <>
       <HomePageProducts />
 
-      <SideBar />
+     
     </>
   );
 };

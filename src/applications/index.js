@@ -4,4 +4,4 @@ export { axiosInstance } from "./instance";
 
 export { ProtectedRoute } from "./ProtectedRoute";
 
-export { isUserAdmin, getUserInitials } from "./utils";
+export { isUserAdmin } from "./utils";

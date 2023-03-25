@@ -19,18 +19,10 @@ export const SideBarContent = ({ sideBarItems }) => {
                 <Box
                   sx={{
                     display: "flex",
-                    marginLeft: "1.2rem",
+                    marginLeft: "1rem",
                   }}
                 >
-                  <h2
-                    style={{
-                      fontSize: "13px",
-                      textDecoration: "none",
-                      color: "black",
-                    }}
-                  >
-                    {name}
-                  </h2>
+                  <h3 style={{ color: "black", fontSize: "13px" }}> {name} </h3>
                 </Box>
               </Link>
             </React.Fragment>
