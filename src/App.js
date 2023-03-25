@@ -58,6 +58,7 @@ function App() {
       lat: 41.727436,
       lng: 44.762967,
     },
+
     zoom: 11,
   };
   const AnyReactComponent = ({ Adress }) => <div>{Adress}</div>;
@@ -98,9 +99,7 @@ function App() {
           }}
         >
           <GoogleMapReact
-            bootstrapURLKeys={{
-              key: "",
-            }}
+            bootstrapURLKeys={{ key: "" }}
             defaultCenter={defaultProps.center}
             defaultZoom={defaultProps.zoom}
           >

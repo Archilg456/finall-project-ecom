@@ -4,6 +4,8 @@ export const HomePage = () => {
   return (
     <>
       <HomePageProducts />
+
+      <SideBar />
     </>
   );
 };

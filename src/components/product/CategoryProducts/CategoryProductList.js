@@ -16,6 +16,7 @@ const StyledCategoryName = styled(Box)(() => ({
   textAlign: "center",
   fontSize: "2rem",
   margin: "4rem",
+  
 }));
 
 export const CategoryProductList = () => {
@@ -38,7 +39,8 @@ export const CategoryProductList = () => {
   }, [sort]);
 
   return (
-    <Box>
+    <Box >
+      
       <StyledCategoryName>{categoryName}</StyledCategoryName>
 
       <Sort value={sort} changeSort={changeSort} />

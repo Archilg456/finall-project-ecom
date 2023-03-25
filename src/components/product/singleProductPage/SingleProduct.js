@@ -17,6 +17,8 @@ export const SingleProduct = () => {
 
   const singleProduct = useSingleProduct();
 
+
+
   useEffect(() => {
     dispatch(fetchSingleProduct({ id: state.id, category: categoryName }));
   }, [state.id]);
