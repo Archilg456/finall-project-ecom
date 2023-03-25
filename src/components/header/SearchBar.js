@@ -27,6 +27,8 @@ export const SearchBar = () => {
         width: 700,
         background: "#fff",
         outline: "none",
+        border: "none",
+      
       }}
       disableClearable
       options={searchResult}

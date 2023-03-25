@@ -54,8 +54,6 @@ export const ProductCard = ({ product }) => {
   };
 
   const onRatingChange = (e) => {
-    console.log(e.target.value);
-
     dispatch(
       rateProduct({
         productId: _id,

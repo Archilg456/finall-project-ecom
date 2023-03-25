@@ -1,4 +1,4 @@
-import { Box, List, ListItemText } from "@mui/material";
+import { Box, List } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import { SideBarHeader } from "./SideBarHeader";
@@ -19,11 +19,18 @@ export const SideBarContent = ({ sideBarItems }) => {
                 <Box
                   sx={{
                     display: "flex",
-                    marginLeft: "2rem",
-                    marginTop: "1.5rem",
+                    marginLeft: "1.2rem",
                   }}
                 >
-                  <ListItemText secondary={name} />
+                  <h2
+                    style={{
+                      fontSize: "13px",
+                      textDecoration: "none",
+                      color: "black",
+                    }}
+                  >
+                    {name}
+                  </h2>
                 </Box>
               </Link>
             </React.Fragment>
