@@ -105,6 +105,9 @@ const productSlice = createSlice({
     setSelectedProduct: (state, action) => {
       state.selectedProduct = action.payload;
     },
+    clearSearchResults: (state) => {
+      state.searchResult = [];
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchHomePageProducts.pending, (state) => {
@@ -164,7 +167,7 @@ const productSlice = createSlice({
     });
     builder.addCase(queryProducts.fulfilled, (state, action) => {
       state.loading = false;
-      state.searchResult = action.payload.product;
+      state.searchResult = action.payload.products;
     });
     builder.addCase(queryProducts.rejected, (state, action) => {
       state.loading = false;
@@ -173,6 +176,6 @@ const productSlice = createSlice({
   },
 });
 
-export const { setSelectedProduct } = productSlice.actions;
+export const { setSelectedProduct, clearSearchResults } = productSlice.actions;
 
 export const productReducer = productSlice.reducer;

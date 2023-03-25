@@ -38,6 +38,7 @@ export {
   fetchProductsByCategory,
   fetchSingleProduct,
   queryProducts,
+  clearSearchResults,
 } from "./slices/ProductSlice";
 
 // cart Slice

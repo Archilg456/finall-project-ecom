@@ -7,12 +7,14 @@ import { Header } from "./components/header";
 import { SideBar } from "./components/sidebar/sideBar";
 import { Box, styled } from "@mui/material";
 import { Footer } from "./components/Footer/Footer";
+import { Link } from "react-router-dom";
 
 const StyledContentContainer = styled(Box)(() => ({
   padding: "0 0 0 37px",
   marginLeft: "225px",
   marginTop: "10rem",
 }));
+
 
 function App() {
   const dispatch = useDispatch();

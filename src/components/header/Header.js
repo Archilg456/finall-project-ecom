@@ -25,7 +25,7 @@ const StyledToolbar = styled(Toolbar)(() => ({
 const StyledBadge = styled(Badge)(() => ({
   "& .MuiBadge-badge": {
     width: "20px",
-    heigth: "21px",
+    heith: "21px",
     color: "#fff",
     background: "#F33451",
     top: "2px",
@@ -51,7 +51,7 @@ export const Header = () => {
           </Link>
           <SearchBar />
           <UserIcon />
-          <Button onClick={() => setIsCartOpen(true)} sx={{ color: "#fff" }}>
+          <Button onClick={() => setIsCartOpen(true)}> 
             <StyledBadge badgeContent={cartItemsQuantity}>
               <FcShop size={40} />
             </StyledBadge>

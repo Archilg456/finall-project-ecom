@@ -9,14 +9,15 @@ export const fetchCart = createAsyncThunk(
       return data;
     } catch (error) {
       return rejectWithValue("Whoops, looks like Someting Went Wrong");
-    } 
+    }
   }
 );
+
 export const saveCart = createAsyncThunk(
   "cart/saveCart",
-  async (userId, cartItems, { rejectWithValue, dispatch }) => {
+  async ({ userId, cartItems }, { rejectWithValue, dispatch }) => {
     try {
-      await axiosInstance.put(`/users/${userId}/cart`, { product: cartItems });
+      await axiosInstance.put(`/users/${userId}/cart`, { products: cartItems });
       dispatch(fetchCart(userId));
     } catch (error) {
       return rejectWithValue("Whoops, looks like Someting Went Wrong");

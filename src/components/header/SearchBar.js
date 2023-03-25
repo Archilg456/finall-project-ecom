@@ -1,25 +1,33 @@
 import { Autocomplete, Box, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { queryProducts, useSearchResults } from "../../redux";
+import {
+  clearSearchResults,
+  queryProducts,
+  useSearchResults,
+} from "../../redux";
 import { useDispatch } from "react-redux";
 
 export const SearchBar = () => {
   const searchResult = useSearchResults();
 
   const [searchQuery, setSearchQuery] = useState("");
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     const timerId = setTimeout(() => {
       if (searchQuery) {
         dispatch(queryProducts(searchQuery));
+      } else {
+        dispatch(clearSearchResults());
       }
-    }, 1500);
+    }, 500);
     return () => {
       clearTimeout(timerId);
     };
   }, [searchQuery]);
+
   return (
     <Autocomplete
       freeSolo
@@ -40,7 +48,6 @@ export const SearchBar = () => {
             to={`/products/categories/${category}/${name}`}
             key={_id}
             state={{ id: _id }}
-            
           >
             <Box>
               <Typography>{name}</Typography>
