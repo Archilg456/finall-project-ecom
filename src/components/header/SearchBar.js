@@ -29,7 +29,7 @@ export const SearchBar = () => {
   }, [searchQuery]);
 
   return (
-    <Autocomplete
+    <Autocomplete  
       freeSolo
       sx={{
         width: 700,

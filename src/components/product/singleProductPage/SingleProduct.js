@@ -9,12 +9,13 @@ import {
 } from "../../../redux";
 import { LoadingWrapper } from "../../shared";
 
-
-const StyledSingleProduct = styled(Box)(() => ({
-  display: "grid",
-  gridTemplateColumns: "1fr 1fr ",
-  gridTemplateRows: "1fr ",
-  marginBottom: 250,
+const StyledSingleProduct = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.up("sm")]: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr ",
+    gridTemplateRows: "1fr ",
+    marginBottom: 250,
+  },
 }));
 
 const StyledInfoProduct = styled(Box)(() => ({

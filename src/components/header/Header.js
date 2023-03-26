@@ -6,34 +6,33 @@ import { CartDrawer } from "./CartDrawer";
 import { SearchBar } from "./SearchBar";
 import { UserIcon } from "./UserIcon";
 import { FcHome, FcShop } from "react-icons/fc";
+import { GiHamburgerMenu } from "react-icons/gi";
 
-const StyledAppBar = styled(AppBar)(() => ({
-  color: "#fff",
-  width: "calc(100% - 225px)",
-  padding: "0 37px 0 30px",
+const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: "#42826CFF",
   boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.24)",
+  [theme.breakpoints.down("sm")]: {
+    width: "100%",
+  },
+  [theme.breakpoints.up("sm")]: {
+    width: "calc(100% - 225px)",
+  },
+  padding: "0 37px 0 30px",
 }));
 
 const StyledToolbar = styled(Toolbar)(() => ({
   display: "flex",
   width: "100%",
   justifyContent: "space-between",
-  
 }));
 
 const StyledBadge = styled(Badge)(() => ({
   "& .MuiBadge-badge": {
-    width: "20px",
-    heith: "21px",
-    color: "#fff",
-    background: "#F33451",
-    top: "2px",
     right: "-3px",
   },
 }));
 
-export const Header = () => {
+export const Header = ({ setDrawerOpen }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const cartItems = useCartItems();
 
@@ -46,12 +45,19 @@ export const Header = () => {
     <Box>
       <StyledAppBar>
         <StyledToolbar>
+          <Button
+            onClick={() => setDrawerOpen((prevState) => !prevState)}
+            sx={{ display: { sm: "none" }, marginRight: "1rem" }}
+          >
+            <GiHamburgerMenu size={35} color="black" />
+          </Button>
+
           <Link to="/">
             <FcHome size={40} />
           </Link>
           <SearchBar />
           <UserIcon />
-          <Button onClick={() => setIsCartOpen(true)}> 
+          <Button onClick={() => setIsCartOpen(true)}>
             <StyledBadge badgeContent={cartItemsQuantity}>
               <FcShop size={40} />
             </StyledBadge>
