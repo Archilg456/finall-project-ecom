@@ -29,6 +29,8 @@ const StyledToolbar = styled(Toolbar)(() => ({
 const StyledBadge = styled(Badge)(() => ({
   "& .MuiBadge-badge": {
     right: "-3px",
+    backgroundColor: "red",
+    color: "white",
   },
 }));
 
